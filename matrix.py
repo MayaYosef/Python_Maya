@@ -8,7 +8,8 @@ Created on Wed Mar 25 21:00:47 2020
 import numpy as np
 
 def make_filters():
-    #the func make a random matrix in size 3X3 and return it
+    #the function makes a random matrix in size 3X3 
+    #the function returns the matrix
     filter = np.random.rand(3,3)
     rows_f = filter.shape[0]
     cols_f = filter.shape[1]
@@ -18,8 +19,8 @@ def make_filters():
     return filter
 
 def mult_matrix(a, filter):
-    #the func gets two matrices and do a multiplication.
-    #the func returns the result     
+    #the function gets two matrices and do a multiplication.
+    #the function returns the result     
     rows_a = a.shape[0]
     cols_a = a.shape[1]   
     new_matrix = np.zeros(shape=(rows_a-2, cols_a-2)) 
@@ -31,14 +32,14 @@ def mult_matrix(a, filter):
         #(  if a at first was in size 9X9 and not 8X8 then at the end a was in size 3X3 
         #and then i+3 or j+3 was not within the boundaries of a
         #instead of line 30 I would write:
-        #if rows_a ==3 and cols_a ==3:
+        #if rows_a == 3 and cols_a == 3:
             #new_matrix[i, j] = sum_of_numbers(np.dot(a, filter))
         #new_matrix[i, j] = sum_of_numbers(np.dot(a[i:i+3, j:j+3], filter))  )
     return new_matrix
 
 def sum_of_numbers(matrix):
-    #the func gets a matrix and adds the numbers in it
-    #the func returns the sum
+    #the function gets a matrix and adds the numbers in it
+    #the function returns the sum
     rows_matrix = matrix.shape[0]
     cols_matrix = matrix.shape[1]
     sum = 0; #the sum of the numbers
@@ -57,10 +58,10 @@ def main():
     cols_a = a.shape[1] #columns of a
     print(a)
     while rows_a >= rows_f and cols_a >= cols_f:
-        filter = make_filters()
-        a = mult_matrix(a, filter)
-        rows_a = a.shape[0]
-        cols_a = a.shape[1]
+        filter = make_filters() #new filter every time
+        a = mult_matrix(a, filter) #the process continues until the multiplication func cannot be called
+        rows_a = a.shape[0] #update number of rows in a
+        cols_a = a.shape[1] #update number of columns n a
         print(a)
 
 if __name__ == "__main__": 
